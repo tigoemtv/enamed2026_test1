@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ENAMED 2026 • Plataforma de Simulados e Inteligência Diagnóstica</title>
+<meta name="description" content="Protótipo navegável de plataforma de simulados, analytics e diagnóstico educacional para preparação ao ENAMED 2026." />
+<meta property="og:title" content="ENAMED 2026 • Simulados & Inteligência Diagnóstica" />
+<meta property="og:description" content="Demonstração de uma plataforma de simulados médicos com diagnóstico por área, evolução temporal e trilhas adaptativas de estudo." />
+<style>
+:root{--bg:#f5f8fb;--panel:#ffffff;--ink:#17324d;--muted:#6b7f92;--line:#dce6ee;--brand:#127c86;--brand2:#1e9aac;--ok:#2f8f62;--warn:#e5a52a;--bad:#c95757;--soft:#eaf6f6;--nav:#0f2d42;--shadow:0 14px 40px rgba(21,50,77,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}.app{min-height:100vh}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:9}.brand{display:flex;gap:12px;align-items:center;font-weight:800}.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-weight:900}.brand small{display:block;color:var(--muted);font-weight:600}.layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 72px)}.side{background:var(--nav);padding:22px 14px;color:#fff}.navbtn{width:100%;border:0;background:transparent;color:#cfe0eb;padding:13px 14px;border-radius:10px;text-align:left;cursor:pointer;margin:3px 0}.navbtn.active,.navbtn:hover{background:rgba(255,255,255,.10);color:#fff}.main{padding:28px;max-width:1400px;width:100%;margin:auto}.screen{display:none}.screen.active{display:block}.grid{display:grid;gap:18px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}.card h3{margin:0 0 10px}.kpi{font-size:28px;font-weight:850}.muted{color:var(--muted)}.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:var(--soft);color:var(--brand);font-weight:700;font-size:13px}.pill.bad{background:#fcecec;color:var(--bad)}.pill.ok{background:#e9f7ef;color:var(--ok)}.alert{border-left:5px solid var(--bad);background:#fff6f6;padding:16px 18px;border-radius:12px}.btn{border:0;border-radius:11px;padding:11px 15px;cursor:pointer;font-weight:750}.primary{background:var(--brand);color:#fff}.secondary{background:#e9f0f5;color:var(--ink)}.danger{background:var(--bad);color:#fff}.hero{display:flex;justify-content:space-between;gap:25px;align-items:center;background:linear-gradient(135deg,#e9f7f8,#ffffff);padding:26px;border-radius:20px;border:1px solid #d5ebee}.hero h1{font-size:30px;margin:0 0 8px}.hero p{margin:0;color:var(--muted)}.progress{height:10px;border-radius:99px;background:#edf2f5;overflow:hidden}.progress span{display:block;height:100%;background:var(--brand);border-radius:99px}.barrow{display:grid;grid-template-columns:180px 1fr 54px;gap:12px;align-items:center;margin:12px 0}.chart{width:100%;height:220px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field label{display:block;font-weight:750;margin-bottom:7px}.field input,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.toggle{display:flex;gap:10px;align-items:center}.note{font-size:13px;color:var(--muted);line-height:1.45}.exam{display:grid;grid-template-columns:1fr 270px;gap:18px}.question{font-size:18px;line-height:1.55}.alt{display:block;border:1px solid var(--line);padding:13px 14px;border-radius:12px;margin:10px 0;cursor:pointer}.alt.selected{border-color:var(--brand);background:var(--soft)}.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.qnum{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 0;cursor:pointer}.qnum.answered{background:#e9f7ef;border-color:#a9d9c2}.qnum.current{outline:2px solid var(--brand)}.timer{font-size:25px;font-weight:850;letter-spacing:.5px}.flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.space{display:flex;align-items:center;justify-content:space-between;gap:16px}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}.tag{font-size:12px;border:1px solid var(--line);border-radius:7px;padding:4px 7px;display:inline-block}.overlay{position:fixed;inset:0;background:rgba(9,28,42,.74);display:grid;place-items:center;z-index:50;padding:20px}.login{max-width:540px;width:100%;background:#fff;border-radius:22px;padding:28px;box-shadow:0 24px 80px rgba(0,0,0,.3)}.login h1{margin:0}.login .logo{margin-bottom:16px}.hidden{display:none!important}.scorecircle{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--brand) 0 64%, #e6eef3 64%);position:relative}.scorecircle:after{content:"";position:absolute;width:112px;height:112px;border-radius:50%;background:#fff}.scorecircle b,.scorecircle span{z-index:1;position:absolute}.scorecircle b{font-size:33px;transform:translateY(-8px)}.scorecircle span{transform:translateY(24px);font-size:12px;color:var(--muted)}.footer-note{margin-top:20px;padding:14px;border:1px dashed #b7c7d2;border-radius:10px;color:var(--muted);font-size:13px}.admin-q{border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:12px;background:#fbfdfe}.mini{font-size:12px;color:var(--muted)}
+
+.landing{min-height:100vh;background:linear-gradient(180deg,#f7fbfc 0%,#eef6f8 58%,#f7fafc 100%);color:var(--ink)}
+.landing-nav{max-width:1180px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.landing-brand{display:flex;align-items:center;gap:12px;font-weight:850}.landing-brand span small{display:block;color:var(--muted);font-weight:650;font-size:12px}
+.landing-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.hero-public{max-width:1180px;margin:34px auto 0;padding:64px 24px 52px;display:grid;grid-template-columns:1.2fr .8fr;gap:52px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#e5f5f5;color:var(--brand);font-weight:800;font-size:13px;border:1px solid #d0eaeb}.hero-public h1{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-2.2px;margin:20px 0 18px}.hero-public p{font-size:18px;line-height:1.65;color:var(--muted);max-width:760px}.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.trustline{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;color:var(--muted);font-size:13px}.trustline b{color:var(--ink)}
+.demo-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:0 30px 80px rgba(21,50,77,.14);transform:rotate(1deg)}.demo-card .mini-window{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fbfdfe}.mini-head{padding:13px 16px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.dots{display:flex;gap:5px}.dots i{display:block;width:8px;height:8px;background:#cbd8e1;border-radius:50%}.mini-body{padding:18px}.mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mini-kpi{padding:14px;border-radius:14px;background:#f4f8fa;border:1px solid #e4edf2}.mini-kpi b{display:block;font-size:22px}.mini-bars{margin-top:16px}.mini-bars div{height:9px;background:#e8eef2;border-radius:99px;margin:10px 0;overflow:hidden}.mini-bars span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px}
+.public-section{max-width:1180px;margin:0 auto;padding:76px 24px}.section-kicker{color:var(--brand);font-weight:850;font-size:13px;text-transform:uppercase;letter-spacing:.08em}.public-section h2{font-size:38px;letter-spacing:-1.2px;margin:10px 0 14px}.public-section>p{color:var(--muted);font-size:17px;line-height:1.6;max-width:760px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.feature{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.feature .icon{width:42px;height:42px;border-radius:12px;background:var(--soft);display:grid;place-items:center;color:var(--brand);font-weight:900}.feature h3{margin:16px 0 8px}.feature p{color:var(--muted);line-height:1.55;margin:0}.official-band{background:var(--nav);color:#fff}.official-inner{max-width:1180px;margin:auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}.official-inner h2{font-size:38px;margin:0 0 12px}.official-inner p{color:#c9dbe6;line-height:1.6}.official-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.official-stat{padding:18px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}.official-stat b{font-size:28px;display:block}.public-cta{max-width:1180px;margin:0 auto 72px;padding:0 24px}.cta-box{background:linear-gradient(135deg,#e6f6f6,#fff);border:1px solid #d3e9eb;border-radius:26px;padding:36px;display:flex;justify-content:space-between;gap:20px;align-items:center}.cta-box h2{margin:0 0 8px;font-size:34px}.cta-box p{margin:0;color:var(--muted)}.public-footer{border-top:1px solid var(--line);padding:26px 24px;background:#fff;color:var(--muted);font-size:13px}.public-footer>div{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.prototype-chip{font-size:12px;padding:6px 9px;border-radius:999px;background:#fff3d9;color:#8a6400;border:1px solid #f0d899;font-weight:800}
+@media(max-width:980px){.hero-public,.official-inner{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.hero-public{padding-top:34px}.demo-card{transform:none}.cta-box{align-items:flex-start;flex-direction:column}.landing-nav{align-items:flex-start}.landing-actions .ghost{display:none}.official-stats{grid-template-columns:1fr 1fr 1fr}.layout{grid-template-columns:1fr}.side{display:none}.g4,.g3,.g2,.formgrid,.exam{grid-template-columns:1fr}.main{padding:16px}.topbar{padding:0 16px}.barrow{grid-template-columns:120px 1fr 48px}.hero{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div id="landing" class="landing">
+  <nav class="landing-nav">
+    <div class="landing-brand"><div class="logo">E26</div><span>ENAMED 2026 <small>Simulados & Inteligência Diagnóstica</small></span></div>
+    <div class="landing-actions"><span class="prototype-chip">Protótipo para apresentação</span><button class="btn ghost" onclick="document.getElementById('recursos').scrollIntoView({behavior:'smooth'})">Conhecer recursos</button><button class="btn primary" onclick="openDemo()">Explorar demonstração</button></div>
+  </nav>
+  <section class="hero-public">
+    <div>
+      <span class="eyebrow">● Preparação orientada por dados</span>
+      <h1>Treino para o ENAMED com diagnóstico que mostra onde estudar.</h1>
+      <p>Uma experiência de simulados médicos desenhada para transformar respostas em inteligência educacional: desempenho por área, alertas de lacunas, evolução temporal e trilhas de estudo personalizadas.</p>
+      <div class="hero-cta"><button class="btn primary" onclick="openDemo()">Abrir ambiente do aluno</button><button class="btn ghost" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">Ver como funciona</button></div>
+      <div class="trustline"><span><b>100 questões</b> no modo oficial</span><span><b>5 horas</b> de prova</span><span><b>4 alternativas</b> por item</span><span><b>Analytics</b> por área temática</span></div>
+    </div>
+    <div class="demo-card">
+      <div class="mini-window">
+        <div class="mini-head"><strong>Visão diagnóstica</strong><div class="dots"><i></i><i></i><i></i></div></div>
+        <div class="mini-body">
+          <span class="pill">Plano adaptativo</span>
+          <h3 style="font-size:25px;margin:14px 0 12px">Desempenho do aluno</h3>
+          <div class="mini-kpis"><div class="mini-kpi"><span class="mini">Nota</span><b>64,0</b></div><div class="mini-kpi"><span class="mini">Melhor área</span><b style="font-size:16px">Pediatria</b></div><div class="mini-kpi"><span class="mini">Prioridade</span><b style="font-size:16px">SUS</b></div></div>
+          <div class="mini-bars"><div><span style="width:76%"></span></div><div><span style="width:66%"></span></div><div><span style="width:61%"></span></div><div><span style="width:54%"></span></div></div>
+          <div class="alert" style="margin-top:16px;font-size:13px"><strong>Alerta ativo</strong><br><span class="muted">Políticas de Saúde / SUS abaixo de 60%.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="recursos" class="public-section">
+    <div class="section-kicker">Proposta de valor</div><h2>Do simulado ao plano de estudo em poucos cliques.</h2><p>O protótipo combina experiência de prova, banco estruturado de questões e inteligência diagnóstica para apoiar estudantes em diferentes momentos da formação médica.</p>
+    <div class="feature-grid">
+      <article class="feature"><div class="icon">01</div><h3>Simulados configuráveis</h3><p>Escolha área temática, dificuldade, etapa formativa e quantidade de questões, ou ative a experiência completa de prova.</p></article>
+      <article class="feature"><div class="icon">02</div><h3>Diagnóstico por área</h3><p>O painel transforma respostas em indicadores por grandes áreas e identifica automaticamente conteúdos que exigem reforço.</p></article>
+      <article class="feature"><div class="icon">03</div><h3>Recomendação ativa</h3><p>Desempenho baixo em SUS, Cirurgia ou outra área gera alertas e direciona o próximo simulado para os temas prioritários.</p></article>
+      <article class="feature"><div class="icon">04</div><h3>Evolução temporal</h3><p>Compare simulados sucessivos e acompanhe a trajetória de desempenho, reduzindo decisões de estudo baseadas apenas em percepção.</p></article>
+      <article class="feature"><div class="icon">05</div><h3>Banco de questões</h3><p>Itens organizados por área, subtema, dificuldade, etapa de formação, resposta correta e justificativa pedagógica.</p></article>
+      <article class="feature"><div class="icon">06</div><h3>Base para psicometria</h3><p>A arquitetura foi preparada para evoluir de uma pontuação diagnóstica para calibração psicométrica e modelos inspirados em TRI.</p></article>
+    </div>
+  </section>
+  <section class="official-band" id="como-funciona"><div class="official-inner"><div><span class="eyebrow" style="background:rgba(255,255,255,.1);color:#dff;border-color:rgba(255,255,255,.15)">Modo de simulação oficial</span><h2 style="margin-top:16px">Uma experiência de prova focada e sem distrações.</h2><p>O modo completo fixa 100 questões, duração de 5 horas e bloqueia a pausa. Para demonstrações rápidas, o usuário também pode criar simulados personalizados de menor duração.</p></div><div class="official-stats"><div class="official-stat"><b>100</b><span>questões objetivas</span></div><div class="official-stat"><b>5h</b><span>temporizador regressivo</span></div><div class="official-stat"><b>A–D</b><span>quatro alternativas</span></div></div></div></section>
+  <section class="public-section"><div class="section-kicker">Inteligência diagnóstica</div><h2>O painel não mostra apenas uma nota.</h2><p>Ele destaca lacunas específicas, prioriza subtemas e cria uma ponte direta entre o resultado do simulado e a próxima ação de estudo — ponto central para transformar dados em aprendizagem.</p></section>
+  <section class="public-cta"><div class="cta-box"><div><h2>Veja o produto funcionando.</h2><p>Entre no ambiente demonstrativo e percorra o dashboard, a geração de simulados, a prova e o relatório de desempenho.</p></div><button class="btn primary" onclick="openDemo()">Explorar o protótipo</button></div></section>
+  <footer class="public-footer"><div><span>Protótipo conceitual de plataforma educacional para ENAMED 2026.</span><span>Produto independente, sem afiliação oficial ao Inep, MEC ou Enare.</span></div></footer>
+</div>
+<div id="loginOverlay" class="overlay hidden">
+  <div class="login">
+    <div class="logo">E26</div>
+    <h1>ENAMED 2026</h1>
+    <p class="muted">Plataforma de simulados, diagnóstico e evolução de desempenho.</p>
+    <div class="formgrid" style="margin-top:18px">
+      <div class="field"><label>E-mail</label><input id="loginEmail" value="aluno@demo.com" /></div>
+      <div class="field"><label>CPF</label><input id="loginCpf" value="000.000.000-00" /></div>
+      <div class="field"><label>Senha</label><input type="password" value="123456" /></div>
+      <div class="field"><label>Etapa de formação</label><select id="loginStage"><option>4º ano (8º semestre)</option><option selected>Concluinte (12º semestre)</option><option>Formado / foco Enare</option></select></div>
+    </div>
+    <button class="btn primary" style="width:100%;margin-top:18px" onclick="enterApp()">Entrar na demonstração</button>
+    <div class="footer-note">Protótipo navegável. Autenticação, CPF e persistência estão simulados localmente; nenhum dado é enviado a servidor.</div>
+  </div>
+</div>
+<div id="appRoot" class="app hidden">
+<header class="topbar">
+  <div class="brand"><div class="logo">E26</div><div>ENAMED 2026 <small>Simulados & Inteligência Diagnóstica</small></div></div>
+  <div class="flex"><button class="btn secondary" onclick="backToLanding()">← Apresentação</button><span class="pill" id="stagePill">Concluinte • 12º semestre</span><button class="btn secondary" onclick="showScreen('perfil')">Meu perfil</button></div>
+</header>
+<div class="layout">
+  <aside class="side">
+    <button class="navbtn active" data-screen="dashboard" onclick="showScreen('dashboard',this)">▦ Dashboard</button>
+    <button class="navbtn" data-screen="novo" onclick="showScreen('novo',this)">✦ Novo simulado</button>
+    <button class="navbtn" data-screen="prova" onclick="showScreen('prova',this)">◷ Prova em andamento</button>
+    <button class="navbtn" data-screen="desempenho" onclick="showScreen('desempenho',this)">⌁ Meu desempenho</button>
+    <button class="navbtn" data-screen="banco" onclick="showScreen('banco',this)">☷ Banco de questões</button>
+    <button class="navbtn" data-screen="perfil" onclick="showScreen('perfil',this)">◎ Perfil</button>
+  </aside>
+  <main class="main">
+    <section id="dashboard" class="screen active">
+      <div class="hero"><div><span class="pill">Plano de estudo adaptativo</span><h1>Boa tarde, aluno.</h1><p>Seu painel prioriza os conteúdos com maior impacto no ganho de proficiência.</p></div><button class="btn primary" onclick="showScreen('novo')">Gerar novo simulado</button></div>
+      <div class="grid g4" style="margin-top:18px">
+        <div class="card"><div class="muted">Nota diagnóstica</div><div class="kpi" id="dashScore">64,0</div><span class="pill ok">Proficiente</span></div>
+        <div class="card"><div class="muted">Questões respondidas</div><div class="kpi" id="answeredTotal">380</div><span class="mini">histórico demonstrativo</span></div>
+        <div class="card"><div class="muted">Melhor área</div><div class="kpi" style="font-size:22px">Pediatria</div><span class="pill ok">76%</span></div>
+        <div class="card"><div class="muted">Prioridade</div><div class="kpi" style="font-size:22px">SUS</div><span class="pill bad">54%</span></div>
+      </div>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card"><h3>Desempenho por área</h3><div id="areaBars"></div></div>
+        <div class="card"><h3>Evolução por simulado</h3><svg class="chart" viewBox="0 0 640 220" id="trendChart"></svg><div class="note">Escala diagnóstica interna de 0 a 100. A linha de referência é 60.</div></div>
+      </div>
+      <div class="alert" style="margin-top:18px"><strong>Alerta de estudo: Políticas de Saúde / SUS abaixo de 60%</strong><div class="muted" style="margin-top:6px">Reforce: princípios e diretrizes do SUS, Atenção Primária, regionalização e redes de atenção, vigilância em saúde, financiamento e controle social.</div><button class="btn secondary" style="margin-top:12px" onclick="prefillSUS()">Criar simulado focado em SUS</button></div>
+    </section>
+
+    <section id="novo" class="screen">
+      <div class="space"><div><h2>Novo simulado</h2><p class="muted">Personalize o treino ou ative a simulação oficial.</p></div><span class="pill">Gerador adaptativo</span></div>
+      <div class="card">
+        <div class="formgrid">
+          <div class="field"><label>Área temática</label><select id="area"><option>Geral</option><option>Políticas de Saúde / SUS</option><option>Clínica Médica</option><option>Cirurgia</option><option>Pediatria</option><option>Ginecologia e Obstetrícia</option><option>Medicina Preventiva e Social</option></select></div>
+          <div class="field"><label>Dificuldade</label><select id="difficulty"><option>Mista</option><option>Fácil</option><option>Médio</option><option>Difícil</option></select></div>
+          <div class="field"><label>Número de questões</label><select id="qCount"><option value="10">10 questões</option><option value="20" selected>20 questões</option><option value="100">100 questões</option></select></div>
+          <div class="field"><label>Etapa de formação</label><select id="stage"><option>Ciclo clínico / 4º ano</option><option selected>Internato / Concluinte</option><option>Formado / Enare</option></select></div>
+        </div>
+        <div style="margin-top:18px" class="toggle"><input id="officialMode" type="checkbox" onchange="syncOfficial()"><label for="officialMode"><strong>Simulação oficial ENAMED</strong> — 100 questões, 5 horas, sem pausa.</label></div>
+        <div style="margin-top:10px" class="toggle"><input id="extraTime" type="checkbox"><label for="extraTime">Simular tempo adicional de acessibilidade (+60 min).</label></div>
+        <div class="footer-note">No modo oficial, a plataforma bloqueia pausa e fixa o formato em 100 itens de múltipla escolha com quatro alternativas. O banco demonstrativo deste protótipo é reduzido e será reutilizado apenas para demonstrar a experiência.</div>
+        <button class="btn primary" style="margin-top:18px" onclick="startExam()">Iniciar simulado</button>
+      </div>
+    </section>
+
+    <section id="prova" class="screen">
+      <div class="space" style="margin-bottom:14px"><div><span class="pill" id="examModePill">Simulado personalizado</span><h2 style="margin:8px 0 0">Prova em andamento</h2></div><div class="flex"><span class="timer" id="timer">01:00:00</span><button id="pauseBtn" class="btn secondary" onclick="togglePause()">Pausar</button></div></div>
+      <div class="exam">
+        <div class="card">
+          <div class="space"><span class="pill" id="qMeta">SUS • Médio</span><span class="muted" id="qCounter">Questão 1 de 20</span></div>
+          <div class="question" id="questionText" style="margin-top:18px"></div>
+          <div id="alternatives"></div>
+          <div class="space" style="margin-top:20px"><button class="btn secondary" onclick="prevQ()">← Anterior</button><div class="flex"><button class="btn secondary" onclick="toggleReview()" id="reviewBtn">☆ Marcar revisão</button><button class="btn primary" onclick="nextQ()">Próxima →</button></div></div>
+        </div>
+        <div class="card"><h3>Navegação</h3><div class="qgrid" id="qGrid"></div><div class="note" style="margin-top:14px">Verde = respondida. Borda destacada = questão atual.</div><button class="btn danger" style="width:100%;margin-top:18px" onclick="finishExam()">Finalizar simulado</button></div>
+      </div>
+    </section>
+
+    <section id="desempenho" class="screen">
+      <div class="space"><div><h2>Meu desempenho</h2><p class="muted">Leitura diagnóstica por área e evolução temporal.</p></div><span class="pill" id="perfClass">Proficiente</span></div>
+      <div class="grid g3" style="margin-top:16px">
+        <div class="card" style="display:grid;place-items:center"><div class="scorecircle" id="scoreCircle"><b id="resultScore">64,0</b><span>nota diagnóstica</span></div></div>
+        <div class="card"><h3>Leitura diagnóstica</h3><p id="diagnosticText">Você está acima da linha de 60, mas ainda há fragilidade relevante em SUS.</p><div class="alert"><strong>Prioridade atual</strong><div id="priorityText" class="muted">Políticas de Saúde / SUS — 54%</div></div></div>
+        <div class="card"><h3>Próximas ações</h3><p class="muted">Recomendações são geradas a partir das áreas com desempenho inferior a 60% e da recorrência de erros por subtema.</p><button class="btn primary" onclick="prefillSUS()">Treinar principal lacuna</button></div>
+      </div>
+      <div class="card" style="margin-top:18px"><h3>Desempenho segmentado</h3><div id="performanceBars"></div></div>
+      <div class="card" style="margin-top:18px"><h3>Interpretação da pontuação</h3><p class="muted">A pontuação do protótipo usa uma aproximação educacional inspirada em TRI: considera acerto, dificuldade do item e consistência do padrão de respostas. Não reproduz a TRI oficial do Inep, que depende de parâmetros calibrados dos itens.</p></div>
+    </section>
+
+    <section id="banco" class="screen">
+      <div class="space"><div><h2>Banco de questões</h2><p class="muted">Visão administrativa do cadastro e da taxonomia.</p></div><span class="pill">Administração de conteúdo</span></div>
+      <div class="card">
+        <table class="table"><thead><tr><th>Campo</th><th>Exemplo funcional</th><th>Uso</th></tr></thead><tbody>
+          <tr><td>Enunciado</td><td>Caso clínico / situação-problema</td><td>Texto principal do item</td></tr>
+          <tr><td>Alternativas</td><td>A, B, C, D</td><td>Quatro opções; uma correta</td></tr>
+          <tr><td>Resposta correta</td><td>B</td><td>Correção e análise</td></tr>
+          <tr><td>Área temática</td><td>Políticas de Saúde / SUS</td><td>Segmentação do desempenho</td></tr>
+          <tr><td>Subtema</td><td>Atenção Primária</td><td>Diagnóstico granular</td></tr>
+          <tr><td>Dificuldade</td><td>Médio</td><td>Seleção e peso diagnóstico</td></tr>
+          <tr><td>Etapa</td><td>Internato / Concluinte</td><td>Direcionamento formativo</td></tr>
+          <tr><td>Justificativa</td><td>Comentário educacional pós-prova</td><td>Feedback ativo</td></tr>
+          <tr><td>Parâmetros psicométricos</td><td>a, b, c (quando calibrados)</td><td>TRI real/futura</td></tr>
+        </tbody></table>
+        <div class="admin-q"><span class="tag">DEMO • SUS • Médio</span><h3>Questão cadastrada</h3><p>Na organização do Sistema Único de Saúde, qual princípio orienta a oferta de cuidado considerando necessidades diferentes entre grupos e indivíduos?</p><p><strong>Gabarito:</strong> Equidade</p><p class="muted">Justificativa: a equidade busca reduzir desigualdades injustas, orientando maior atenção às diferentes necessidades em saúde.</p></div>
+      </div>
+    </section>
+
+    <section id="perfil" class="screen">
+      <h2>Perfil do aluno</h2>
+      <div class="card">
+        <div class="formgrid">
+          <div class="field"><label>Nome</label><input value="Aluno Demonstrativo"></div>
+          <div class="field"><label>CPF</label><input value="000.000.000-00"></div>
+          <div class="field"><label>E-mail</label><input value="aluno@demo.com"></div>
+          <div class="field"><label>Etapa</label><select id="profileStage" onchange="updateStageFromProfile()"><option>4º ano (8º semestre)</option><option selected>Concluinte (12º semestre)</option><option>Formado / foco Enare</option></select></div>
+          <div class="field"><label>Objetivo principal</label><select id="profileGoal"><option>Autoavaliação</option><option selected>ENAMED + Enare</option><option>Preparação de longo prazo</option></select><div class="mini" id="stageRuleNote"></div></div>
+          <div class="field"><label>Meta semanal</label><select><option>50 questões</option><option selected>100 questões</option><option>200 questões</option></select></div>
+        </div>
+        <button class="btn primary" style="margin-top:18px">Salvar perfil</button>
+      </div>
+    </section>
+  </main>
+</div>
+</div>
+<script>
+const baseQuestions=[
+{area:'Políticas de Saúde / SUS',sub:'Princípios do SUS',difficulty:'Fácil',q:'Na organização do Sistema Único de Saúde, qual princípio orienta a oferta de cuidado considerando necessidades diferentes entre grupos e indivíduos?',a:['Universalidade','Equidade','Descentralização','Regionalização'],correct:1,why:'Equidade orienta respostas proporcionais às diferentes necessidades em saúde.'},
+{area:'Políticas de Saúde / SUS',sub:'Atenção Primária',difficulty:'Médio',q:'Em uma rede de atenção, qual função é mais associada à Atenção Primária à Saúde?',a:['Coordenar o cuidado ao longo da rede','Concentrar procedimentos de alta complexidade','Atuar apenas em urgências','Substituir todos os níveis de atenção'],correct:0,why:'A APS exerce papel de coordenação do cuidado e ordenação da rede.'},
+{area:'Medicina Preventiva e Social',sub:'Epidemiologia',difficulty:'Médio',q:'Em um teste de rastreamento, a sensibilidade representa principalmente a capacidade de:',a:['Identificar corretamente quem tem a condição','Excluir corretamente todos os sadios','Medir prevalência sem viés','Estimar diretamente risco relativo'],correct:0,why:'Sensibilidade é a proporção de verdadeiros positivos entre pessoas com a condição.'},
+{area:'Clínica Médica',sub:'Raciocínio clínico',difficulty:'Médio',q:'Em um paciente estável, qual abordagem inicial melhor representa raciocínio clínico seguro diante de sintomas inespecíficos?',a:['Integrar história, exame e hipóteses antes de exames direcionados','Solicitar todos os exames disponíveis','Iniciar múltiplos tratamentos simultaneamente','Desconsiderar probabilidade pré-teste'],correct:0,why:'A avaliação clínica estruturada orienta hipóteses e exames de forma racional.'},
+{area:'Pediatria',sub:'Cuidado integral',difficulty:'Fácil',q:'Na consulta pediátrica de acompanhamento, qual abordagem melhor representa cuidado integral?',a:['Avaliar crescimento, desenvolvimento, contexto familiar e prevenção','Avaliar apenas peso e altura','Focar exclusivamente em doenças agudas','Evitar abordar aspectos psicossociais'],correct:0,why:'O cuidado integral inclui dimensões de crescimento, desenvolvimento, prevenção e contexto.'},
+{area:'Ginecologia e Obstetrícia',sub:'Pré-natal',difficulty:'Médio',q:'No acompanhamento pré-natal, qual conduta geral é mais adequada?',a:['Combinar avaliação clínica, rastreamentos indicados e educação em saúde','Restringir a consulta ao exame físico','Solicitar exames sem considerar idade gestacional','Evitar orientação sobre sinais de alerta'],correct:0,why:'O pré-natal combina avaliação, rastreamento, prevenção e orientação.'},
+{area:'Cirurgia',sub:'Avaliação perioperatória',difficulty:'Médio',q:'Antes de um procedimento cirúrgico, qual é um objetivo central da avaliação pré-operatória?',a:['Identificar riscos e otimizar condições clínicas modificáveis','Garantir ausência absoluta de qualquer risco','Substituir o consentimento informado','Definir alta antes da cirurgia'],correct:0,why:'A avaliação pré-operatória identifica e reduz riscos evitáveis.'},
+{area:'Políticas de Saúde / SUS',sub:'Redes de atenção',difficulty:'Difícil',q:'A regionalização no SUS busca principalmente:',a:['Organizar serviços em territórios e redes articuladas conforme necessidades da população','Eliminar a coordenação interfederativa','Concentrar todos os serviços em capitais','Impedir referência entre níveis assistenciais'],correct:0,why:'A regionalização organiza a atenção em territórios e redes com fluxos articulados.'},
+{area:'Políticas de Saúde / SUS',sub:'Controle social',difficulty:'Médio',q:'Qual mecanismo está diretamente relacionado à participação social na gestão do SUS?',a:['Conselhos e conferências de saúde','Somente auditorias privadas','Exclusivamente decisões hospitalares','Apenas regulação de leitos'],correct:0,why:'Conselhos e conferências são mecanismos centrais de participação e controle social.'},
+{area:'Medicina Preventiva e Social',sub:'Prevenção',difficulty:'Fácil',q:'Uma intervenção voltada a evitar o surgimento de uma doença antes de sua ocorrência caracteriza prevenção:',a:['Primária','Secundária','Terciária','Quaternária exclusivamente'],correct:0,why:'Prevenção primária atua antes do desenvolvimento da doença.'}
+];
+let exam={questions:[],answers:[],current:0,review:[],official:false,remaining:3600,paused:false,timerId:null};
+let perf={'Políticas de Saúde / SUS':54,'Clínica Médica':66,'Cirurgia':61,'Pediatria':76,'Ginecologia e Obstetrícia':63,'Medicina Preventiva e Social':58};
+function openDemo(){document.getElementById('landing').classList.add('hidden');document.getElementById('appRoot').classList.remove('hidden');document.getElementById('loginOverlay').classList.remove('hidden');window.scrollTo({top:0,behavior:'instant'})}
+function backToLanding(){document.getElementById('loginOverlay').classList.add('hidden');document.getElementById('appRoot').classList.add('hidden');document.getElementById('landing').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+function enterApp(){document.getElementById('loginOverlay').classList.add('hidden');const s=document.getElementById('loginStage').value;document.getElementById('profileStage').value=s;updateStageLabel(s)}
+function updateStageLabel(s){document.getElementById('stagePill').textContent=s.replace('Concluinte (12º semestre)','Concluinte • 12º semestre').replace('4º ano (8º semestre)','4º ano • 8º semestre');const goal=document.getElementById('profileGoal'),note=document.getElementById('stageRuleNote');if(goal&&note){const enare=[...goal.options].find(o=>o.text==='ENAMED + Enare');if(s.includes('4º ano')){if(enare)enare.disabled=true;goal.value='Autoavaliação';note.textContent='Para o 4º ano, o resultado tem finalidade formativa/diagnóstica e não pode ser usado no Enare.'}else{if(enare)enare.disabled=false;note.textContent='';}}}
+function updateStageFromProfile(){updateStageLabel(document.getElementById('profileStage').value)}
+function showScreen(id,btn){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.navbtn').forEach(x=>x.classList.remove('active'));const target=btn||document.querySelector('.navbtn[data-screen="'+id+'"]');if(target)target.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function areaBars(target='areaBars'){const el=document.getElementById(target);el.innerHTML='';Object.entries(perf).forEach(([k,v])=>{el.innerHTML+=`<div class="barrow"><span>${k}</span><div class="progress"><span style="width:${v}%"></span></div><strong>${v}%</strong></div>`})}
+function trend(){const svg=document.getElementById('trendChart'),vals=[52,56,59,61,64];const pts=vals.map((v,i)=>`${70+i*120},${190-(v-40)*5}`).join(' ');let html='<line x1="50" y1="90" x2="600" y2="90" stroke="#c95757" stroke-dasharray="6 6"/><text x="54" y="82" fill="#c95757" font-size="12">60</text><polyline fill="none" stroke="#127c86" stroke-width="4" points="'+pts+'"/>';vals.forEach((v,i)=>{const x=70+i*120,y=190-(v-40)*5;html+=`<circle cx="${x}" cy="${y}" r="6" fill="#127c86"/><text x="${x-10}" y="${y-12}" font-size="12" fill="#17324d">${v}</text><text x="${x-9}" y="210" font-size="11" fill="#6b7f92">S${i+1}</text>`});svg.innerHTML=html}
+function syncOfficial(){const on=document.getElementById('officialMode').checked;if(on){document.getElementById('qCount').value='100';document.getElementById('qCount').disabled=true;document.getElementById('area').value='Geral';document.getElementById('difficulty').value='Mista'}else document.getElementById('qCount').disabled=false}
+function prefillSUS(){showScreen('novo');document.getElementById('officialMode').checked=false;syncOfficial();document.getElementById('area').value='Políticas de Saúde / SUS';document.getElementById('difficulty').value='Mista';document.getElementById('qCount').value='20'}
+function startExam(){exam.official=document.getElementById('officialMode').checked;const n=+document.getElementById('qCount').value;const area=document.getElementById('area').value;const diff=document.getElementById('difficulty').value;let pool=baseQuestions.filter(q=>(area==='Geral'||q.area===area)&&(diff==='Mista'||q.difficulty===diff));if(!pool.length)pool=baseQuestions;exam.questions=Array.from({length:n},(_,i)=>({...pool[i%pool.length],demoIndex:i}));exam.answers=Array(n).fill(null);exam.review=Array(n).fill(false);exam.current=0;exam.remaining=(exam.official?5*3600:Math.max(30*60,n*3*60))+(document.getElementById('extraTime').checked?3600:0);exam.paused=false;document.getElementById('pauseBtn').disabled=exam.official;document.getElementById('pauseBtn').textContent=exam.official?'Pausa indisponível':'Pausar';document.getElementById('examModePill').textContent=exam.official?'Simulação oficial • 100 questões':'Simulado personalizado';renderExam();runTimer();showScreen('prova')}
+function renderExam(){if(!exam.questions.length){document.getElementById('questionText').innerHTML='<strong>Nenhum simulado iniciado.</strong><br><span class="muted">Gere um novo simulado para começar.</span>';return}const q=exam.questions[exam.current];document.getElementById('qMeta').textContent=`${q.area} • ${q.difficulty}`;document.getElementById('qCounter').textContent=`Questão ${exam.current+1} de ${exam.questions.length}`;document.getElementById('questionText').textContent=q.q;document.getElementById('alternatives').innerHTML=q.a.map((x,i)=>`<div class="alt ${exam.answers[exam.current]===i?'selected':''}" onclick="answer(${i})"><strong>${String.fromCharCode(65+i)}.</strong> ${x}</div>`).join('');document.getElementById('reviewBtn').textContent=exam.review[exam.current]?'★ Marcada para revisão':'☆ Marcar revisão';renderGrid();renderTimer()}
+function answer(i){exam.answers[exam.current]=i;renderExam()}
+function nextQ(){if(exam.current<exam.questions.length-1){exam.current++;renderExam()}}
+function prevQ(){if(exam.current>0){exam.current--;renderExam()}}
+function goQ(i){exam.current=i;renderExam()}
+function toggleReview(){exam.review[exam.current]=!exam.review[exam.current];renderExam()}
+function renderGrid(){const el=document.getElementById('qGrid');el.innerHTML=exam.questions.map((_,i)=>`<button class="qnum ${exam.answers[i]!==null?'answered':''} ${i===exam.current?'current':''}" onclick="goQ(${i})">${i+1}</button>`).join('')}
+function runTimer(){clearInterval(exam.timerId);exam.timerId=setInterval(()=>{if(!exam.paused&&exam.remaining>0){exam.remaining--;renderTimer();if(exam.remaining===0)finishExam(true)}},1000)}
+function renderTimer(){const h=Math.floor(exam.remaining/3600),m=Math.floor((exam.remaining%3600)/60),s=exam.remaining%60;document.getElementById('timer').textContent=[h,m,s].map(x=>String(x).padStart(2,'0')).join(':')}
+function togglePause(){if(exam.official)return;exam.paused=!exam.paused;document.getElementById('pauseBtn').textContent=exam.paused?'Retomar':'Pausar'}
+function calcScore(){let weighted=0,max=0;const w={Fácil:.8,Médio:1,Difícil:1.2};let hardCorrect=0,easyWrong=0;const areaStats={};exam.questions.forEach((q,i)=>{const wt=w[q.difficulty];max+=wt;const ok=exam.answers[i]===q.correct;if(ok)weighted+=wt;if(q.difficulty==='Difícil'&&ok)hardCorrect++;if(q.difficulty==='Fácil'&&!ok)easyWrong++;if(!areaStats[q.area])areaStats[q.area]=[0,0];areaStats[q.area][1]++;if(ok)areaStats[q.area][0]++});let raw=max?weighted/max*100:0;const inconsistency=Math.min(.10,(hardCorrect>0&&easyWrong>hardCorrect)?easyWrong*.015:0);raw=raw*(1-inconsistency);return {score:Math.round(raw*10)/10,areaStats}}
+function finishExam(auto=false){if(!exam.questions.length){showScreen('novo');return}clearInterval(exam.timerId);const r=calcScore();Object.entries(r.areaStats).forEach(([a,[ok,total]])=>perf[a]=Math.round(ok/total*100));const score=r.score;document.getElementById('resultScore').textContent=score.toFixed(1).replace('.',',');document.getElementById('dashScore').textContent=score.toFixed(1).replace('.',',');const prof=score>=60;document.getElementById('perfClass').textContent=prof?'Proficiente':'Não-proficiente';document.getElementById('perfClass').className='pill '+(prof?'ok':'bad');document.getElementById('diagnosticText').textContent=prof?'A nota diagnóstica ficou acima da linha de 60. O foco agora é reduzir lacunas por área.':'A nota diagnóstica ficou abaixo de 60. O plano de estudo deve priorizar as áreas com maior recorrência de erros.';const weak=Object.entries(perf).sort((a,b)=>a[1]-b[1])[0];document.getElementById('priorityText').textContent=`${weak[0]} — ${weak[1]}%`;document.getElementById('scoreCircle').style.background=`conic-gradient(var(--brand) 0 ${Math.max(0,Math.min(score,100))}%, #e6eef3 ${Math.max(0,Math.min(score,100))}%)`;areaBars();areaBars('performanceBars');showScreen('desempenho')}
+areaBars();areaBars('performanceBars');trend();renderExam();
+</script>
+</body>
+</html>
